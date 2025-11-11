@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="es"> <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Productos</title> <link rel="stylesheet" href="css/style.css">
+    <title>Tienda de Productos</title>
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap" rel="stylesheet">
@@ -11,60 +15,74 @@
 </head>
 <body>
     
-    <header class="site-header">
+    <header>
         <div class="header-container">
-            <h1 class="site-title">Tienda de Productos</h1> 
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="auth/login.html" id="login-link">Iniciar Sesión</a></li>
-                    <li class="nav-right"><a href="#" id="logout-link" style="display: none;">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
+            <h1 class="site-title">Bienvenidos a la Tienda</h1> 
+            <div> 
+                <nav>
+                    <ul>
+                        <li><a href="auth/login.html" id="login-link">Iniciar Sesión</a></li>
+                        <li class="nav-right"><a href="#" id="logout-link" style="display: none;">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <main class="site-main">
+    <main>
         <section class="hero-section">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum inventore nostrum voluptatum, doloribus repellendus quia animi similique vel id deserunt perferendis commodi fugiat maxime mollitia dolores hic in nihil maiores?</p>
         </section>
 
         <section class="products-section">
             <h2>Algunos de nuestros productos</h2>
+            
             <div class="product-grid"> 
                 
-                <article class="product-card">
+                <article>
                     <img src="placeholder-product-1.jpg" alt="Reloj 1"> 
                     <h3>Producto 1</h3>
-                    <p class="price">Precio: $3000</p>
-                    <button class="add-to-cart">Agregar al Carrito</button>   
+                    <p>Precio: $3000</p>
+                    <button>Agregar al Carrito</button>   
                 </article>
 
-                <article class="product-card">
+                <article>
                     <img src="placeholder-product-2.jpg" alt="Reloj 2">
                     <h3>Producto 2</h3>
-                    <p class="price">Precio: $3000</p>
-                    <button class="add-to-cart">Agregar al Carrito</button>   
+                    <p>Precio: $3000</p>
+                    <button>Agregar al Carrito</button>   
                 </article>
 
-                <article class="product-card">
+                <article>
                     <img src="placeholder-product-3.jpg" alt="Reloj 3">
                     <h3>Producto 3</h3>
-                    <p class="price">Precio: $3000</p>
-                    <button class="add-to-cart">Agregar al Carrito</button>   
+                    <p>Precio: $3000</p>
+                    <button>Agregar al Carrito</button>   
                 </article>
 
-                <article class="product-card">
+                <article>
                     <img src="placeholder-product-4.jpg" alt="Reloj 4">
                     <h3>Producto 4</h3>
-                    <p class="price">Precio: $3000</p>
-                    <button class="add-to-cart">Agregar al Carrito</button>   
+                    <p>Precio: $3000</p>
+                    <button>Agregar al Carrito</button>   
                 </article>
 
             </div>
         </section>
+        
+        <div class="auth-container" style="display:none;"> 
+            <h2>Iniciar Sesión</h2>
+            <form class="auth-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
     </main>
 
-    <footer class="site-footer">
+    <footer>
         <p>&copy; 2025 Tienda de Productos. Todos los derechos reservados.</p>
     </footer>
 
