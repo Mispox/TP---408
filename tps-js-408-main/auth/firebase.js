@@ -1,10 +1,10 @@
 // Importar Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 // Importaciones de Auth: Agregamos signOut y onAuthStateChanged
-import { 
-    getAuth, 
-    createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword, 
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
@@ -23,7 +23,6 @@ const firebaseConfig = {
 // Inicializar la App y Auth fuera del DOMContentLoaded
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
 
 // Ejecutamos todo el código que interactúa con el DOM (elementos HTML)
 document.addEventListener('DOMContentLoaded', () => {
@@ -86,14 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutLink = document.getElementById('logout-link');
 
     // OBTENEMOS EL ELEMENTO <li> PADRE (que es el que hay que ocultar/mostrar)
-    const logoutListItem = logoutLink ? logoutLink.parentElement : null; 
+    const logoutListItem = logoutLink ? logoutLink.parentElement : null;
 
     // Lógica para mostrar/ocultar al cambiar el estado de autenticación
     onAuthStateChanged(auth, (user) => {
-        if (logoutListItem) { 
+        if (logoutListItem) {
             if (user) {
                 // Usuario logueado: Muestra el LI. Usamos 'flex' para la alineación CSS.
-                logoutListItem.style.display = 'flex'; 
+                logoutListItem.style.display = 'flex';
             } else {
                 // Usuario no logueado: Oculta el LI.
                 logoutListItem.style.display = 'none';
@@ -104,12 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lógica para el clic de Cerrar Sesión
     if (logoutLink) {
         logoutLink.addEventListener('click', (e) => {
-            e.preventDefault(); 
+            e.preventDefault();
 
             signOut(auth).then(() => {
                 alert("Sesión cerrada. ¡Vuelve pronto!");
                 // Redirige al usuario a la página de inicio
-                window.location.href = "../index.html"; 
+                window.location.href = "../index.html";
             }).catch((error) => {
                 console.error("Error al cerrar sesión:", error);
                 alert("Hubo un error al cerrar la sesión.");
