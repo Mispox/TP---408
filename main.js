@@ -1,4 +1,4 @@
-import { guardarUsuarioDB, leerUsuariosDB } from "./firebase.js";
+import { guardarUsuarioDB, leerUsuariosDB } from "./auth/firebase.js";
 
 // Guardamos un usuario de prueba
 guardarUsuarioDB("juan", { nombre: "Juan", edad: 25 })
