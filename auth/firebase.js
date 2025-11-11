@@ -124,18 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lógica para mostrar/ocultar al cambiar el estado de autenticación
     onAuthStateChanged(auth, (user) => {
-        if (loginListItem && registerListItem && logoutListItem) {
+        if (loginListItem && logoutListItem) {
             if (user) {
-                // Usuario logueado: Muestra el LI de logout y oculta los de login/register.
+                // Usuario logueado: Muestra el LI de logout y oculta el de login.
                 loginListItem.style.display = 'none';
-                registerListItem.style.display = 'none';
                 logoutListItem.style.display = 'flex';
             } else {
-                // Usuario no logueado: Oculta el LI de logout y muestra los de login/register.
+                // Usuario no logueado: Oculta el LI de logout y muestra el de login.
                 loginListItem.style.display = 'flex';
-                registerListItem.style.display = 'flex';
                 logoutListItem.style.display = 'none';
             }
+        }
+        if (registerListItem) {
+            registerListItem.style.display = 'none';
         }
     });
 
