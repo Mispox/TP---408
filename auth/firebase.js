@@ -8,6 +8,11 @@ import {
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import {
+    getFirestore,
+    collection,
+    addDoc
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Configuración de tu proyecto
 const firebaseConfig = {
@@ -23,6 +28,7 @@ const firebaseConfig = {
 // Inicializar la App y Auth fuera del DOMContentLoaded
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 
 // Ejecutamos todo el código que interactúa con el DOM (elementos HTML)
@@ -36,9 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btnRegister.addEventListener("click", (e) => {
             e.preventDefault();
 
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
             const password2 = document.getElementById("password2").value;
+            const phone = document.getElementById("phone").value;
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (recaptchaResponse.length === 0) {
+                alert("Por favor, verifica que no eres un robot.");
+                return;
+            }
 
             if (password !== password2) {
                 alert("Las contraseñas no coinciden");
@@ -46,6 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    return addDoc(collection(db, "users"), {
+                        uid: user.uid,
+                        nombre: nombre,
+                        apellido: apellido,
+                        phone: phone
+                    });
+                })
                 .then(() => {
                     alert("Usuario creado con éxito");
                     window.location.href = "login.html";
@@ -66,6 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
+            const recaptchaResponse = grecaptcha.getResponse();
+
+            if (recaptchaResponse.length === 0) {
+                alert("Por favor, verifica que no eres un robot.");
+                return;
+            }
 
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
