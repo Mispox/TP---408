@@ -5,88 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda de Productos</title>
     
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="./css/style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap" rel="stylesheet">
-
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-    
-    <header>
-        <div class="header-container">
-            <h1 class="site-title">Bienvenidos a la Tienda</h1> 
-            <div> 
-                <nav>
-                    <ul>
-                        <li><a href="auth/login.html" id="login-link">Iniciar Sesión</a></li>
-                        <li class="nav-right"><a href="#" id="logout-link" style="display: none;">Cerrar Sesión</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+ <header>
+    <div class="logo">
+        <a href="./index.html">
+            <img src="./img/logo.png" alt="Logo de la Tienda">
+        </a>
+    </div>
+    <nav>
+    <ul>
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./pages/contacto.html">Contacto</a></li>
+    </ul>
+    </nav>
+ </header> 
 
-    <main>
-        <section class="hero-section">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum inventore nostrum voluptatum, doloribus repellendus quia animi similique vel id deserunt perferendis commodi fugiat maxime mollitia dolores hic in nihil maiores?</p>
-        </section>
+ <main>
+<h1>Bienvenidos a la Tienda</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum inventore nostrum voluptatum, doloribus repellendus quia animi similique vel id deserunt perferendis commodi fugiat maxime mollitia dolores hic in nihil maiores?</p>
+<section>
+<h2>Algunos de nuestros productos</h2>
+<div>
+    <article>
+        <img src="./img/product_1.jpg" alt="Producto 1">
+        <h3>Producto 1</h3>
+        <p>Precio: $3000  </p>
+        <button> Agregar al Carrito </button>    
+    </article>
 
-        <section class="products-section">
-            <h2>Algunos de nuestros productos</h2>
-            
-            <div class="product-grid"> 
-                
-                <article>
-                    <img src="placeholder-product-1.jpg" alt="Reloj 1"> 
-                    <h3>Producto 1</h3>
-                    <p>Precio: $3000</p>
-                    <button>Agregar al Carrito</button>   
-                </article>
+    <article>
+        <img src="./img/product_2.jpg" alt="Producto 2">
+        <h3>Producto 2</h3>
+        <p>Precio: $3000  </p>
+        <button> Agregar al Carrito </button>    
+    </article>
 
-                <article>
-                    <img src="placeholder-product-2.jpg" alt="Reloj 2">
-                    <h3>Producto 2</h3>
-                    <p>Precio: $3000</p>
-                    <button>Agregar al Carrito</button>   
-                </article>
+    <article>
+        <img src="./img/product_3.jpg" alt="Producto 3">
+        <h3>Producto 3</h3>
+        <p>Precio: $3000  </p>
+        <button> Agregar al Carrito </button>    
+    </article>
 
-                <article>
-                    <img src="placeholder-product-3.jpg" alt="Reloj 3">
-                    <h3>Producto 3</h3>
-                    <p>Precio: $3000</p>
-                    <button>Agregar al Carrito</button>   
-                </article>
-
-                <article>
-                    <img src="placeholder-product-4.jpg" alt="Reloj 4">
-                    <h3>Producto 4</h3>
-                    <p>Precio: $3000</p>
-                    <button>Agregar al Carrito</button>   
-                </article>
-
-            </div>
-        </section>
-        
-        <div class="auth-container" style="display:none;"> 
-            <h2>Iniciar Sesión</h2>
-            <form class="auth-form">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" required>
-                <button type="submit">Entrar</button>
-            </form>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Tienda de Productos. Todos los derechos reservados.</p>
-    </footer>
-
-    <script type="module" src="auth/firebase.js"></script>
-    <script type="module" src="main.js"></script>
+    <article>
+        <img src="./img/product_4.jpg" alt="Producto 4">
+        <h3>Producto 4</h3>
+        <p>Precio: $3000  </p>
+        <button> Agregar al Carrito </button>    
+    </article>
+</div>
+</section>
+ </main>  
+ <footer>
+    <p>Sitio realizado por Milo. Todos los derechos reservados.</p>
+    <nav>
+        <ul>
+            <li>Instagram</li>
+            <li>Whatsapp</li>
+            <li>Facebook</li>
+        </ul>
+    </nav>
+ </footer>
 </body>
 </html>
