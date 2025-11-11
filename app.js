@@ -1,49 +1,65 @@
+
+// Inicializar EmailJS
+emailjs.init('O06bpb2D0eJZvyk2l');
+
 const form = document.getElementById('contactForm');
 const btn = document.getElementById('button');
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyiIQaUod5b5JRvEE8kHrCsswtLXJNZwKO11YtNmVu9ixDDM-FC0n_kWHyq8B4FdZYK8g/exec';
 
-// 🔴 ¡IMPORTANTE! Reemplaza esta URL con la URL de tu Web App de GAS.
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwpe36E8GAq_ncTiHtLZ2LQgZk8rEZGuW9Cs0IALAzAgro5cPGcJIar98q3iFw4VHOodA/exec';
+if (form) {
+    form.addEventListener('submit', e => {
+        e.preventDefault();
 
-form.addEventListener('submit', e => {
-    e.preventDefault(); 
-    
-    btn.disabled = true;
-    btn.textContent = 'Enviando...';
-    
-    // 🚩 CORRECCIÓN: Usamos URLSearchParams para asegurar que el formato de envío
-    // sea compatible con cómo Google Apps Script espera el objeto 'e.parameter'.
-    const formData = new FormData(form);
-    const searchParams = new URLSearchParams(formData);
-    // Hacer consol log con search params (VER)
-    fetch(scriptURL, { 
-        method: 'POST', 
-        // Enviamos los datos en formato URL-encoded, que es ideal para GAS
-        body: searchParams,
-        // Añadir cabeceras para asegurar que el servidor (GAS) sepa cómo interpretar el cuerpo
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        redirect: 'follow' 
-    })
-    .then(response => {
-        // En este punto, la comunicación es exitosa.
-        console.log('Success! La respuesta de Google fue:', response);
-        alert('¡Mensaje enviado!');
-        
-        form.reset();
-        btn.disabled = false;
-        btn.textContent = 'Enviar Mensaje';
-    })
-    .catch(error => {
-        console.error('Error!', error.message);
-        alert('Ocurrió un error al enviar el mensaje. Revisa la consola para más detalles.');
-        
-        btn.disabled = false;
-        btn.textContent = 'Enviar Mensaje';
+        // Validar formulario
+        if (!form.checkValidity()) {
+            alert('Por favor, completa todos los campos requeridos correctamente.');
+            return;
+        }
+
+        // Validar reCAPTCHA
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+            alert('Por favor, completa el reCAPTCHA.');
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        const formData = new FormData(form);
+        const searchParams = new URLSearchParams(formData);
+
+        // Enviar los datos a Google Sheets
+        fetch(scriptURL, {
+            method: 'POST',
+            body: searchParams,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+            redirect: 'follow'
+        })
+        .then(response => {
+            if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+            return response.text(); // Tu GAS devuelve texto o JSON
+        })
+        .then(data => {
+            console.log('Guardado en Google Sheets:', data);
+
+            // Enviar el correo con EmailJS
+            const serviceID = 'service_dlpq70m';
+            const templateID = 'template_tthm3je';
+            return emailjs.sendForm(serviceID, templateID, form);
+        })
+        .then(() => {
+            alert('¡Mensaje enviado correctamente y datos guardados!');
+            form.reset();
+            grecaptcha.reset();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Ocurrió un error: ' + error.message);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.textContent = 'Enviar Mensaje';
+        });
     });
-});
-
-
-
-
-
+}

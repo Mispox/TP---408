@@ -113,19 +113,27 @@ document.addEventListener('DOMContentLoaded', () => {
         LOG OUT (VISIBILIDAD Y FUNCIÓN)
     ========================== */
 
+    const loginLink = document.getElementById('login-link');
+    const registerLink = document.getElementById('register-link');
     const logoutLink = document.getElementById('logout-link');
 
     // OBTENEMOS EL ELEMENTO <li> PADRE (que es el que hay que ocultar/mostrar)
+    const loginListItem = loginLink ? loginLink.parentElement : null;
+    const registerListItem = registerLink ? registerLink.parentElement : null;
     const logoutListItem = logoutLink ? logoutLink.parentElement : null;
 
     // Lógica para mostrar/ocultar al cambiar el estado de autenticación
     onAuthStateChanged(auth, (user) => {
-        if (logoutListItem) {
+        if (loginListItem && registerListItem && logoutListItem) {
             if (user) {
-                // Usuario logueado: Muestra el LI. Usamos 'flex' para la alineación CSS.
+                // Usuario logueado: Muestra el LI de logout y oculta los de login/register.
+                loginListItem.style.display = 'none';
+                registerListItem.style.display = 'none';
                 logoutListItem.style.display = 'flex';
             } else {
-                // Usuario no logueado: Oculta el LI.
+                // Usuario no logueado: Oculta el LI de logout y muestra los de login/register.
+                loginListItem.style.display = 'flex';
+                registerListItem.style.display = 'flex';
                 logoutListItem.style.display = 'none';
             }
         }
