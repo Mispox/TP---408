@@ -1,43 +1,73 @@
+/* -------------------- */
+/* 1. Base y Reset */
+/* -------------------- */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    letter-spacing: 0.5px;
-    color: #333;
+:root {
+    /* Variables de Color (basadas en tus tonos de degradado) */
+    --primary-color: #667eea; /* Azul claro */
+    --secondary-color: #764ba2; /* Morado */
+    --accent-color: #1b0a29; /* Morado oscuro para botones */
+    --text-dark: #333;
+    --text-light: white;
 }
+
+body {
+    font-family: 'BBH Sans Bogle', 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Fondo general */
+    letter-spacing: 0.5px;
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: color 0.3s;
+}
+
+/* -------------------- */
+/* 2. Header y Navegación */
+/* -------------------- */
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: sticky; /* Se queda arriba al hacer scroll */
+    top: 0;
+    z-index: 1000;
 }
 
-nav {
+.header-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite envolver en móviles */
+}
+
+.site-title {
+    color: var(--text-light);
+    font-size: 1.8rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: flex-start;
-    gap: 2rem;
-}
-
-nav li {
-    position: relative;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 nav a {
-    text-decoration: none;
-    color: white;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -50,66 +80,121 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-}
-
-nav a:hover::after {
-    width: 80%;
-}
-
 .nav-right {
     margin-left: auto;
 }
 
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-img {
-    object-fit: contain;
-    max-height: 200px;
-}
+/* -------------------- */
+/* 3. Main Content y Tipografía */
+/* -------------------- */
 
 main {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+    margin: 20px auto;
+    padding: 0 2rem;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    nav {
-        padding: 0 1rem;
-    }
+h2 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    padding-top: 10px;
 }
+
+.hero-section {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* -------------------- */
+/* 4. Grid de Productos */
+/* -------------------- */
+
+.product-grid { 
+    display: grid;
+    /* Diseño responsivo: 4 columnas en escritorio, mínimo 250px por tarjeta */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+}
+
+article {
+    /* Estilo de la tarjeta de producto */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+article:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+article img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc;
+}
+
+article h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: var(--text-dark);
+}
+
+article p {
+    color: #28a745; /* Precio en verde */
+    font-weight: bold;
+    margin: 10px 0 15px 0;
+    font-size: 1.2rem;
+}
+
+article button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px; 
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+article button:hover {
+    background-color: #3a153b;
+    transform: scale(1.02);
+}
+
+/* -------------------- */
+/* 5. Estilos de Autenticación (Login/Registro) */
+/* -------------------- */
 
 .auth-container {
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    margin: 50px auto 0;
+    max-width: 350px;
+    margin: 50px auto; /* Centrado en la página */
 }
 
 .auth-container h2 {
     text-align: center;
-    color: #333;
+    color: var(--text-dark);
     margin-bottom: 20px;
 }
 
@@ -120,10 +205,7 @@ main {
     color: #555;
 }
 
-.auth-form input[type="email"],
-.auth-form input[type="password"],
-.auth-form input[type="text"],
-.auth-form input[type="tel"] {
+.auth-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -135,12 +217,13 @@ main {
 .auth-form button {
     width: 100%;
     padding: 10px;
-    background-color: #1b0a29;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 .auth-form button:hover {
@@ -153,3 +236,49 @@ main {
     margin-top: 10px;
     font-weight: bold;
 }
+
+/* -------------------- */
+/* 6. Footer y Media Queries (Responsivo) */
+/* -------------------- */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    color: #666;
+    font-size: 0.9rem;
+    background-color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .site-title {
+        margin-bottom: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-right {
+        margin-left: 0; /* Desactiva el margin-left: auto en móvil */
+    }
+}
+
+@media (max-width: 576px) {
+    .product-grid {
+        /* En pantallas muy pequeñas, una sola columna para las tarjetas */
+        grid-template-columns: 1fr; 
+    }
+    main {
+        padding: 0 1rem;
+    }
+}
+
