@@ -24,6 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+
 // Ejecutamos todo el código que interactúa con el DOM (elementos HTML)
 document.addEventListener('DOMContentLoaded', () => {
 
