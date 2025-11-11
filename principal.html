@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
 </head>
     <body>
         <header>
-            <div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                        <li class="nav-right"><a href="#" id="logout-link">Cerrar Sesión</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+            <nav class="main-nav">
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
 
-        <script type="module" src="auth/firebase.js"></script>
+            <ul class="auth-links">
+                <li><a href="auth/login.html" id="login-link" style="display: none;">Iniciar Sesión</a></li>
+                <li><a href="auth/register.html" id="register-link" style="display: none;">Registrarse</a></li>
+                <li class="nav-right"><a href="#" id="logout-link">Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+     </header>
+
+        <script type="module" src="main.js"></script>
     </body>
 </html>

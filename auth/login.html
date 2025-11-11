@@ -9,14 +9,11 @@
 </head>
     <body>
         <header>
-            <div>
-                <nav>
+            <nav class="main-nav">
                     <ul>
                         <li><a href="../index.html">volver</a></li>
-                        <li><a href="#" id="logout-link" style="display: none;">Cerrar Sesión</a></li>
                     </ul>
-                </nav>
-            </div>
+            </nav>
         </header>
 
     <div class="auth-container">
@@ -32,7 +29,7 @@
                 <input type="password" id="password" name="contraseña">
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+            <div class="g-recaptcha" data-sitekey="6LcYq_IrAAAAAOCRjcjWKq5IEow8xpYn5RiGnuAg"></div>
             <button type="submit" id="buttonlogin">Acceder</button>
             <p id="error-message"></p>
         </form>
@@ -42,8 +39,7 @@
         </p>
     </div>
 
-    <script type="module" src="/auth/firebase.js"></script>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="../main.js"></script>
 
 
     </body>
