@@ -1,19 +1,18 @@
 // Importar Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 // Importaciones de Auth: Agregamos signOut y onAuthStateChanged
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged,
-    sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import {
     getFirestore,
     collection,
     addDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Configuración de tu proyecto
 const firebaseConfig = {
@@ -104,32 +103,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = "../principal.html";
                 })
                 .catch((error) => {
-                    alert("Error: " + error.message);
+                    let message = "Ocurrió un error inesperado.";
+                    switch (error.code) {
+                        case "auth/invalid-credential":
+                            message = "Las credenciales proporcionadas no son válidas. Por favor, verifica tu correo y contraseña.";
+                            break;
+                        case "auth/wrong-password":
+                            message = "La contraseña es incorrecta. Por favor, inténtalo de nuevo.";
+                            break;
+                        case "auth/user-not-found":
+                            message = "No se encontró ningún usuario con este correo electrónico.";
+                            break;
+                        case "auth/invalid-email":
+                            message = "El formato del correo electrónico no es válido.";
+                            break;
+                        default:
+                            message = "Error: " + error.message;
+                            break;
+                    }
+                    alert(message);
                 });
         });
     }
 
-
-    /* ==========================
-        PASSWORD RESET
-    ========================== */
-    const btnReset = document.getElementById("buttonreset");
-    if (btnReset) {
-        btnReset.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById("email").value;
-
-            sendPasswordResetEmail(auth, email)
-                .then(() => {
-                    alert("Se ha enviado un correo para restablecer tu contraseña.");
-                    window.location.href = "login.html";
-                })
-                .catch((error) => {
-                    alert("Error: " + error.message);
-                });
-        });
-    }
 
     /* ==========================
         LOG OUT (VISIBILIDAD Y FUNCIÓN)
