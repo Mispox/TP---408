@@ -13,7 +13,7 @@
     --color-degrade-start: #667eea;
     --color-degrade-end: #764ba2;
     --color-accent: #4a148c;
-    --color-background: #f0f2f5; /* Gris claro para el fondo */
+    --color-background: #ffffff; /* Fondo blanco */
     --color-text: #333333;
     --color-manga-border: #dddddd;
     --color-price: #555555;
@@ -47,15 +47,13 @@ main {
 /* 2. Header (Navegación y Auth) */
 /* -------------------- */
 
-/* Se elimina el body con gradiente para usar un fondo sólido */
-
 header {
+    background: linear-gradient(135deg, var(--color-degrade-start) 0%, var(--color-degrade-end) 100%);
     padding: 1rem 2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; 
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
@@ -119,15 +117,15 @@ header .auth-links {
 /* -------------------- */
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     text-align: center;
-    color: var(--color-degrade-end); 
-    margin-top: 30px;
+    color: var(--color-accent);
+    margin-top: 40px;
     margin-bottom: 20px;
-    font-weight: 500; 
+    font-weight: 500;
 }
 
-.hero-section p {
+main > p {
     max-width: 800px;
     margin: 0 auto 40px auto;
     text-align: center;
@@ -136,9 +134,9 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     text-align: center;
-    color: var(--color-accent); 
+    color: var(--color-accent);
     margin-bottom: 30px;
     font-weight: 500;
 }
@@ -147,58 +145,58 @@ h2 {
 /* 4. Grid de Productos */
 /* -------------------- */
 
-section div { 
+section div {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
 article {
     background-color: #ffffff;
-    border: 1px solid var(--color-manga-border);
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 article:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 article img {
     width: 100%;
-    height: 300px; 
-    object-fit: cover; 
-    margin-bottom: 10px;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
     border-radius: 4px;
-    border: 1px solid #eee; 
 }
 
 article h3 {
-    font-size: 1.1rem; 
+    font-size: 1.2rem;
     margin-top: 5px;
     color: var(--color-text);
-    font-weight: 500; 
+    font-weight: 500;
 }
 
 article p {
-    color: var(--color-price); 
-    font-weight: 400; 
-    margin: 4px 0 10px 0;
+    color: var(--color-price);
+    font-weight: 400;
+    margin: 8px 0 15px 0;
     font-size: 1rem;
 }
 
 article button {
-    background-color: var(--color-accent); 
+    background-color: var(--color-accent);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px; 
+    padding: 12px 24px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.3s;
 }
