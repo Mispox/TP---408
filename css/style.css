@@ -9,25 +9,25 @@
 }
 
 :root {
-    /* Paleta de colores: Azul y Morado del degradado original */
-    --color-degrade-start: #667eea; /* Azul claro */
-    --color-degrade-end: #764ba2; /* Morado */
-    --color-accent: #4a148c; /* Morado Oscuro (para títulos y botones) */
-    --color-background: #fdfdff; 
-    --color-text: #333333; 
-    --color-manga-border: #bbbbbb; 
-    --color-price: #555555; /* Gris oscuro para el precio */
-    
-    /* Fuente: Roboto para una apariencia limpia de UI */
+    /* Paleta de colores */
+    --color-degrade-start: #667eea;
+    --color-degrade-end: #764ba2;
+    --color-accent: #4a148c;
+    --color-background: #f0f2f5; /* Gris claro para el fondo */
+    --color-text: #333333;
+    --color-manga-border: #dddddd;
+    --color-price: #555555;
+
+    /* Fuente */
     --font-family-ui: 'Roboto', sans-serif;
 }
 
 body {
-    font-family: var(--font-family-ui); 
+    font-family: var(--font-family-ui);
     line-height: 1.6;
-    background-color: var(--color-background); 
+    background-color: var(--color-background);
     color: var(--color-text);
-    font-weight: 400; 
+    font-weight: 400;
 }
 
 a {
@@ -47,10 +47,7 @@ main {
 /* 2. Header (Navegación y Auth) */
 /* -------------------- */
 
-body {
-    /* Aplicamos tu degradado original */
-    background: linear-gradient(135deg, var(--color-degrade-start) 0%, var(--color-degrade-end) 100%);
-}
+/* Se elimina el body con gradiente para usar un fondo sólido */
 
 header {
     padding: 1rem 2rem;
@@ -364,11 +361,19 @@ footer nav li:hover {
 }
 /* Contact Form Styles */
 .contact-form {
-    background: white;
-    padding: 30px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #333;
 }
 
 .form-group {
@@ -377,8 +382,9 @@ footer nav li:hover {
 
 .contact-form label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
 }
 
 .contact-form input[type="text"],
@@ -386,10 +392,20 @@ footer nav li:hover {
 .contact-form input[type="tel"],
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+    font-size: 1rem;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form input[type="tel"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-degrade-start);
+    outline: none;
 }
 
 .contact-form textarea {
@@ -397,23 +413,22 @@ footer nav li:hover {
     resize: vertical;
 }
 
+.contact-form .g-recaptcha {
+    margin-bottom: 20px;
+}
+
 .contact-form button {
-    background-color: #150417;
+    background-color: #212529;
     color: white;
-    padding: 12px 30px;
+    padding: 12px 24px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 500;
     transition: background-color 0.3s;
 }
 
-.contact-form button:hover:not(:disabled) {
-    background-color: #1b0a29;
-}
-
-.contact-form button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+.contact-form button:hover {
+    background-color: #343a40;
 }
