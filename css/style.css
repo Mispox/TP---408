@@ -206,46 +206,6 @@ article button:hover {
 }
 
 /* -------------------- */
-/* 5. Footer (Pie de Página) */
-/* -------------------- */
-
-footer {
-    background-color: var(--color-degrade-end); 
-    color: white;
-    padding: 20px 2rem;
-    margin-top: 50px;
-    text-align: center;
-    border-top: 5px solid var(--color-degrade-start); 
-}
-
-footer p {
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    font-weight: 300; 
-}
-
-footer nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 5px;
-}
-
-footer nav li {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-    cursor: pointer;
-    font-weight: 300;
-}
-
-footer nav li:hover {
-    opacity: 1;
-    color: var(--color-degrade-start); 
-}
-
-/* -------------------- */
 /* 6. Media Queries (Responsivo) */
 /* -------------------- */
 

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Contacto</title>
-
+    
     <!-- Librerías externas del usuario -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    
     <!-- Inicialización de EmailJS (Mantenido según tu estructura, aunque la lógica usa GAS) -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
@@ -91,7 +91,7 @@
         button:hover:not(:disabled) {
             background-color: #1b0a29;
         }
-
+        
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -148,16 +148,12 @@
             </form>
         </section>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Contacto</p>
-    </footer>
-
-    <!-- Bloque JavaScript para el envío a Google Apps Script -->
+   
+<!-- Bloque JavaScript para el envío a Google Apps Script -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-    // Inicializar EmailJS
+    // Inicializar EmailJS 
     emailjs.init('O06bpb2D0eJZvyk2l');
 
     const form = document.getElementById('contactForm');
@@ -187,8 +183,8 @@
         const searchParams = new URLSearchParams(formData);
 
         // Enviar los datos a Google Sheets
-        fetch(scriptURL, {
-            method: 'POST',
+        fetch(scriptURL, { 
+            method: 'POST', 
             body: searchParams,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
             redirect: 'follow'
@@ -216,7 +212,7 @@
         })
         .finally(() => {
             btn.disabled = false;
-.            btn.textContent = 'Enviar Mensaje';
+            btn.textContent = 'Enviar Mensaje';
         });
     });
 });
@@ -224,3 +220,4 @@
 
 </body>
 </html>
+
