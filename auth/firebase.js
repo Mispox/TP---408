@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
                     alert("Bienvenido!");
-                    window.location.href = "../paginas/principal.html";
+                    window.location.href = "../principal.html";
                 })
                 .catch((error) => {
                     alert("Error: " + error.message);
