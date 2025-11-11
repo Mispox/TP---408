@@ -9,276 +9,255 @@
 }
 
 :root {
-    /* Variables de Color (basadas en tus tonos de degradado) */
-    --primary-color: #667eea; /* Azul claro */
-    --secondary-color: #764ba2; /* Morado */
-    --accent-color: #1b0a29; /* Morado oscuro para botones */
-    --text-dark: #333;
-    --text-light: white;
+    /* Paleta de colores inspirada en Manga/One Piece */
+    --color-primary: #ff5722; /* Rojo/Naranja Vibrante (Énfasis) */
+    --color-secondary: #212121; /* Negro/Gris Oscuro (Fondo de Header) */
+    --color-background: #fdfdff; /* Blanco Roto/Gris Claro (Fondo principal) */
+    --color-text: #333333; /* Texto Oscuro */
+    --color-manga-border: #bbbbbb; /* Borde de tarjeta */
 }
 
 body {
-    font-family: 'BBH Sans Bogle', 'Arial', sans-serif;
+    font-family: 'BBH Sans Bogle', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4; /* Fondo general */
-    letter-spacing: 0.5px;
-    color: var(--text-dark);
+    background-color: var(--color-background); 
+    color: var(--color-text);
 }
 
 a {
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--color-text);
     transition: color 0.3s;
 }
 
-/* -------------------- */
-/* 2. Header y Navegación */
-/* -------------------- */
-
-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    position: sticky; /* Se queda arriba al hacer scroll */
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Permite envolver en móviles */
-}
-
-.site-title {
-    color: var(--text-light);
-    font-size: 1.8rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-nav a {
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-nav a:hover {
-    background-color: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-}
-
-.nav-right {
-    margin-left: auto;
-}
-
-/* -------------------- */
-/* 3. Main Content y Tipografía */
-/* -------------------- */
-
+/* Contenedor principal para centrar el contenido */
 main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 2rem;
 }
 
+/* -------------------- */
+/* 2. Header (Navegación) */
+/* -------------------- */
+
+header {
+    background-color: var(--color-secondary);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px; /* Tamaño del logo de Luffy */
+    object-fit: contain;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--color-background);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--color-primary);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* -------------------- */
+/* 3. Main Content y Hero */
+/* -------------------- */
+
+h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    color: var(--color-primary);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section p {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
 h2 {
-    color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 30px;
     font-size: 2rem;
-    padding-top: 10px;
-}
-
-.hero-section {
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    margin-bottom: 40px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    color: var(--color-secondary);
+    margin-bottom: 30px;
 }
 
 /* -------------------- */
-/* 4. Grid de Productos */
+/* 4. Grid de Productos (Mangas) */
 /* -------------------- */
 
-.product-grid { 
+section div { 
+    /* El contenedor div que contiene los articles (product-grid) */
     display: grid;
-    /* Diseño responsivo: 4 columnas en escritorio, mínimo 250px por tarjeta */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Mínimo 220px para la tarjeta de manga */
     gap: 30px;
 }
 
 article {
-    /* Estilo de la tarjeta de producto */
+    /* Estilo de la tarjeta de manga */
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
+    border: 1px solid var(--color-manga-border);
+    border-radius: 8px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+    position: relative; /* Para posibles efectos */
 }
 
 article:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 article img {
+    /* Estilo para las portadas de los mangas */
     width: 100%;
-    height: auto;
-    max-height: 200px;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc;
+    height: 300px; /* Alto fijo para portadas de manga */
+    object-fit: cover; /* Para asegurar que la portada cubra el espacio */
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 3px solid var(--color-secondary); /* Borde de estilo cómic */
+    transition: border 0.3s;
+}
+
+article:hover img {
+    border: 3px solid var(--color-primary);
 }
 
 article h3 {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    color: var(--text-dark);
+    font-size: 1.4rem;
+    margin-top: 5px;
+    color: var(--color-secondary);
 }
 
 article p {
-    color: #28a745; /* Precio en verde */
+    color: #008800; /* Precio en verde, como una oferta */
     font-weight: bold;
-    margin: 10px 0 15px 0;
-    font-size: 1.2rem;
+    margin: 8px 0 15px 0;
+    font-size: 1.1rem;
 }
 
 article button {
-    background-color: var(--accent-color);
+    background-color: var(--color-primary);
     color: white;
     border: none;
-    padding: 12px 25px;
-    border-radius: 50px; 
+    padding: 10px 20px;
+    border-radius: 5px; 
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     transition: background-color 0.3s, transform 0.1s;
 }
 
 article button:hover {
-    background-color: #3a153b;
-    transform: scale(1.02);
+    background-color: #e64a19;
+    transform: scale(1.03);
 }
 
 /* -------------------- */
-/* 5. Estilos de Autenticación (Login/Registro) */
-/* -------------------- */
-
-.auth-container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    margin: 50px auto; /* Centrado en la página */
-}
-
-.auth-container h2 {
-    text-align: center;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-}
-
-.auth-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
-
-.auth-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.auth-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.auth-form button:hover {
-    background-color: #3a153b;
-}
-
-#error-message {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* -------------------- */
-/* 6. Footer y Media Queries (Responsivo) */
+/* 5. Footer (Pie de Página) */
 /* -------------------- */
 
 footer {
+    background-color: var(--color-secondary);
+    color: var(--color-background);
+    padding: 20px 2rem;
+    margin-top: 50px;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-top: 1px solid #ddd;
-    color: #666;
-    font-size: 0.9rem;
-    background-color: #fff;
+    border-top: 5px solid var(--color-primary); /* Línea de color */
 }
 
+footer p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 5px;
+}
+
+footer nav li {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+footer nav li:hover {
+    opacity: 1;
+    color: var(--color-primary);
+}
+
+
+/* -------------------- */
+/* 6. Media Queries (Responsivo) */
+/* -------------------- */
 
 @media (max-width: 768px) {
-    .header-container {
+    header {
         flex-direction: column;
-        text-align: center;
+        gap: 15px;
     }
-    
-    .site-title {
-        margin-bottom: 15px;
-    }
-
     nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .nav-right {
-        margin-left: 0; /* Desactiva el margin-left: auto en móvil */
-    }
-}
-
-@media (max-width: 576px) {
-    .product-grid {
-        /* En pantallas muy pequeñas, una sola columna para las tarjetas */
-        grid-template-columns: 1fr; 
+        gap: 1.5rem;
     }
     main {
         padding: 0 1rem;
     }
 }
 
+@media (max-width: 576px) {
+    section div {
+        /* En pantallas muy pequeñas, una sola columna para los mangas */
+        grid-template-columns: 1fr; 
+    }
+    article img {
+        height: 250px; /* Reducir un poco la altura de la imagen en móvil */
+    }
+}
+
+
+   
