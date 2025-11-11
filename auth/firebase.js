@@ -1,18 +1,19 @@
 // Importar Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 // Importaciones de Auth: Agregamos signOut y onAuthStateChanged
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    onAuthStateChanged,
+    sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
     getFirestore,
     collection,
     addDoc
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Configuración de tu proyecto
 const firebaseConfig = {
@@ -108,6 +109,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    /* ==========================
+        PASSWORD RESET
+    ========================== */
+    const btnReset = document.getElementById("buttonreset");
+    if (btnReset) {
+        btnReset.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert("Se ha enviado un correo para restablecer tu contraseña.");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        });
+    }
 
     /* ==========================
         LOG OUT (VISIBILIDAD Y FUNCIÓN)
