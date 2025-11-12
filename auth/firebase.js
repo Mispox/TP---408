@@ -6,7 +6,8 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import {
     getFirestore,
@@ -126,6 +127,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    /* ==========================
+        FORGOT PASSWORD
+    ========================== */
+    const forgotPasswordForm = document.getElementById("forgotPasswordForm");
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert("Se ha enviado un correo para restablecer tu contraseña.");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                });
+        });
+    }
 
     /* ==========================
         LOG OUT (VISIBILIDAD Y FUNCIÓN)
