@@ -11,7 +11,10 @@ import {
 import {
     getFirestore,
     collection,
-    addDoc
+    addDoc,
+    getDocs,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Configuración de tu proyecto
@@ -141,19 +144,44 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutListItem = logoutLink ? logoutLink.parentElement : null;
 
     // Lógica para mostrar/ocultar al cambiar el estado de autenticación
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => { // La hacemos asíncrona
+        const welcomeMessageSpan = document.getElementById('welcome-message');
+
         if (loginListItem && logoutListItem) {
             if (user) {
-                // Usuario logueado: Muestra el LI de logout y oculta el de login.
+                // Usuario logueado
                 loginListItem.style.display = 'none';
                 logoutListItem.style.display = 'flex';
+
+                // Buscar el nombre del usuario en Firestore
+                try {
+                    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        welcomeMessageSpan.textContent = `Bienvenido, ${userData.nombre}`;
+                        welcomeMessageSpan.style.display = 'flex';
+                    } else {
+                        welcomeMessageSpan.textContent = 'Bienvenido'; // Mensaje genérico
+                        welcomeMessageSpan.style.display = 'flex';
+                    }
+                } catch (error) {
+                    console.error("Error al obtener datos de usuario:", error);
+                    welcomeMessageSpan.textContent = 'Bienvenido'; // Mensaje en caso de error
+                    welcomeMessageSpan.style.display = 'flex';
+                }
+
             } else {
-                // Usuario no logueado: Oculta el LI de logout y muestra el de login.
+                // Usuario no logueado
                 loginListItem.style.display = 'flex';
                 logoutListItem.style.display = 'none';
+                if (welcomeMessageSpan) {
+                    welcomeMessageSpan.style.display = 'none'; // Oculta el mensaje
+                }
             }
         }
         if (registerListItem) {
+            // Siempre ocultamos el de registro si estamos en principal.html
             registerListItem.style.display = 'none';
         }
     });
