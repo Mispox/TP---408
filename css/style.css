@@ -64,9 +64,15 @@ header {
 }
 
 header .main-nav {
-    display: flex; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 30px; 
+    width: 100%;
+}
+#welcome-message {
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 nav ul {
