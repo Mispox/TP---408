@@ -159,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const querySnapshot = await getDocs(q);
                     if (!querySnapshot.empty) {
                         const userData = querySnapshot.docs[0].data();
-                        welcomeMessageSpan.textContent = `Bienvenido, ${userData.nombre} ${userData.apellido}`;
+                        welcomeMessageSpan.textContent = `Bienvenido/a, ${userData.nombre} ${userData.apellido}`;
                         welcomeMessageSpan.style.display = 'flex';
                     } else {
-                        welcomeMessageSpan.textContent = 'Bienvenido'; // Mensaje genérico
+                        welcomeMessageSpan.textContent = 'Bienvenido/a'; // Mensaje genérico
                         welcomeMessageSpan.style.display = 'flex';
                     }
                 } catch (error) {
