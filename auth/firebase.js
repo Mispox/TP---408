@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================
         REGISTRO
     ========================== */
-    const btnRegister = document.getElementById("buttonregister");
-    if (btnRegister) {
-        btnRegister.addEventListener("click", (e) => {
+    const registerForm = document.getElementById("registerForm");
+    if (registerForm) {
+        registerForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const nombre = document.getElementById("nombre").value;
@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================
         LOGIN
     ========================== */
-    const btnLogin = document.getElementById("buttonlogin");
-    if (btnLogin) {
-        btnLogin.addEventListener("click", (e) => {
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const email = document.getElementById("email").value;
