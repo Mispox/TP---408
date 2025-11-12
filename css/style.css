@@ -73,6 +73,7 @@ header .main-nav {
     color: white;
     font-weight: 400;
     font-size: 1rem;
+    padding: 0.5rem 0;
 }
 
 nav ul {
@@ -113,6 +114,7 @@ nav a:hover::after {
 header .auth-links {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1.5rem;
     padding: 0;
     margin-left: 15px; /* Pequeño espacio para separarlo del nav principal */
