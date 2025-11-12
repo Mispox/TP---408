@@ -403,7 +403,9 @@ footer nav li:hover {
 
 .contact-form label {
     display: block;
-    margin-bottom: 8px;
+    /* --- MODIFICACIÓN REALIZADA AQUÍ --- */
+    margin-bottom: 0; /* Eliminado el espacio entre la etiqueta y el campo de texto */
+    /* ------------------------------------ */
     font-weight: 500;
     color: #555;
 }
