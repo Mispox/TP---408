@@ -112,6 +112,21 @@ header .auth-links {
     margin-left: 15px; /* Pequeño espacio para separarlo del nav principal */
 }
 
+.nav-link-text, .nav-link-text:hover, .nav-link-text::after {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border: none !important;
+    background: none !important;
+    width: auto !important;
+}
+
+.nav-link-text::after {
+    display: none;
+}
+
 /* -------------------- */
 /* 3. Main Content y Títulos */
 /* -------------------- */
